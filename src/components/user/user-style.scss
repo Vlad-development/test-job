@@ -1,0 +1,118 @@
+
+.table {
+  padding: 40px 0 160px;
+
+  &-card div {
+    padding: 10px 0 13px;
+  }
+}
+
+.table-card, .user {
+  display: grid;
+}
+
+.user, .table-card {
+  margin:  40px 0;
+
+  & div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #C6C9F8;
+  }
+
+  &-photo{
+    padding: 0;
+    
+    @include sm{
+      padding: 10px 0;
+    }
+
+    & img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+      @include sm{
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  &-chat button {
+    padding: 10px 15px;
+    border: none;
+    font-size: 0; 
+    background: url('./img/chat.svg') no-repeat center;
+    border-radius: 15px;
+    cursor: pointer;
+
+    &:disabled{
+      cursor: auto;
+      opacity: 0.5;
+    }
+
+    @include sm{
+      font-size: 15px;  
+      background : #c6c9f8;
+    
+      &:hover{
+        background-color: #afb3e7;
+      }
+    }
+
+  }
+
+  grid-template-columns:  30% 30% 30% 10%;
+  grid-template-rows:  66px 68px 67px;
+  grid-template-areas:
+          "user-photo user-photo  user-status  user-chat"
+          "user-photo  user-photo user-age user-age"
+          "user-name user-name user-registration user-registration";
+
+  @include sm {
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-areas:
+            "user-photo user-name  user-name"
+            "user-photo user-status user-chat"
+            "user-age user-status user-chat"
+            "user-registration user-registration  user-registration";
+  }
+
+  @include md{
+    margin: 0;
+    grid-template-columns: repeat(6 , 16.6%);
+    grid-template-rows: repeat(2 ,1fr);
+    grid-template-areas:
+            "user-photo user-name user-status user-registration user-age user-chat"
+            "user-photo user-name user-status user-registration user-age user-chat"
+  }
+
+  &-name, .table-name {
+    grid-area: user-name;
+  } 
+  &-photo, .table-photo {
+    grid-area: user-photo;
+  }
+  &-status, .table-status {
+    grid-area: user-status;
+  }
+  &-registration, .table-registration {
+    grid-area: user-registration;
+  }
+  &-age, .table-age {
+    grid-area: user-age;
+  }
+  &-chat, .table-action {
+    grid-area: user-chat;
+  }
+}
+
+@media (max-width:$md) {
+  .d-none{
+    display: none;
+  }
+}

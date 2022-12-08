@@ -1,0 +1,20 @@
+@import "components/media.sass";
+
+*{
+  box-sizing: border-box;
+}
+
+header, footer {
+  background: #000;
+  height: 60px;
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex:  1 1 auto;
+}
